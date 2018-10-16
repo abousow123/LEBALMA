@@ -35,7 +35,7 @@ public class DBconnexion {
 */
 	
 	private static final String PILOTE= "com.mysql.jdbc.Driver";
-	private static final String URL_DATABASE = "jdbc:mysql://localhost:3306/lebalma";
+	private static final String URL_DATABASE = "jdbc:mysql://localhost:3306/lebalma?useSSL=false";
 	private static final String USER = "root";
 	private static final String PASSWORD = "sow";
 	

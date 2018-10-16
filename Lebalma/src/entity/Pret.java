@@ -21,6 +21,14 @@ public class Pret {
 		this.montant = montant;
 		this.datepret = datepret;
 	}
+	
+	
+
+	public Pret() {
+		super();
+	}
+
+
 
 	public int getIdpret() {
 		return idpret;
