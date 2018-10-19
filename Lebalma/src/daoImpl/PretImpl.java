@@ -36,6 +36,7 @@ public class PretImpl implements IPret {
 			preparedStatement.setDate(3, (Date) p.getDatepret());
 			
 			preparedStatement.executeUpdate();
+			preparedStatement.close();
 
 			System.out.println("Record is inserted into DBUSER table!");
 		} catch (SQLException e) {
@@ -52,23 +53,21 @@ public class PretImpl implements IPret {
 	public Pret getPret(int idPret) {
 		// TODO Auto-generated method stub
 		dbConnection = DBconnexion.getConnection() ;
-		Pret p = new Pret();
+	
 		
 		try {
 			st = dbConnection.createStatement();
 			rs = st.executeQuery("SELECT idpret,montant,datepret FROM Pret WHERE idpret="+idPret) ;
 			
-			while (rs.next()){
+			if (rs.next()){
 				int id = rs.getInt("idpret") ;
 				double montant = rs.getDouble("montant") ;
 				Date d = rs.getDate("datepret") ;
 				
-				p.setIdpret(id);
-				p.setMontant(montant);
-				p.setDatepret(d);
+				return new Pret(id, montant, d);
+				
 			}
 			
-			return p;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -122,6 +121,7 @@ public class PretImpl implements IPret {
 			preparedStatement.setDate(2, (Date) p.getDatepret());
 			
 				preparedStatement.executeUpdate();
+				preparedStatement.close();
 				
 			    return true ;
 			

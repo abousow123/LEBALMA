@@ -21,11 +21,11 @@ public class Client {
 
 	private int telephone;
 
-	public Pret pret;
+	public int pret;
 
 	public java.util.Collection<Versement> versement;
 
-	public Client(int cni, String prenom, String nom, String adresse, int telephone, Pret pret,
+	public Client(int cni, String prenom, String nom, String adresse, int telephone, int pret,
 			Collection<Versement> versement) {
 		super();
 		this.cni = cni;
@@ -46,7 +46,7 @@ public class Client {
 		this.telephone = telephone;
 	}
 
-	public Client(int cni, String prenom, String nom, String adresse, int telephone, Pret pret) {
+	public Client(int cni, String prenom, String nom, String adresse, int telephone, int pret) {
 		super();
 		this.cni = cni;
 		this.prenom = prenom;
@@ -101,11 +101,11 @@ public class Client {
 		this.telephone = telephone;
 	}
 
-	public Pret getPret() {
+	public int getPret() {
 		return pret;
 	}
 
-	public void setPret(Pret pret) {
+	public void setPret(int pret) {
 		this.pret = pret;
 	}
 
