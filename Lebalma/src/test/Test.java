@@ -2,10 +2,13 @@ package test;
 
 
 
-import java.util.List;
 
+import daoImpl.ClientImpl;
 import daoImpl.PretImpl;
+import daoImpl.VersementImpl;
+import entity.Client;
 import entity.Pret;
+import entity.Versement;
 
 public class Test {
 
@@ -14,20 +17,19 @@ public class Test {
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		
-		//Pret p = new Pret(2, 5000, sqlDate) ;
+		
+		Client c = new Client(17, "Abou", "SOW", "thiaroye", 254689) ;
+		Pret p = new Pret(250000,  sqlDate,c.getCni()) ;
+		
+		Versement v = new Versement(2000, sqlDate, c.getCni()) ;
 		
 		PretImpl pr = new PretImpl() ;
-		Pret p = pr.getPret(2) ;
-		//p.setMontant(600);
-		pr.deletePret(1);
+		ClientImpl cl = new ClientImpl() ;
+		VersementImpl vr = new VersementImpl() ;
+		
+		//cl.addClient(c);
 		//pr.addPret(p);
-		List<Pret> pl = pr.getAllPrets() ;
-		//if(a==null) System.out.println("wrong");
+		vr.addVersement(v);
 		
-		for (int i = 0; i < pl.size(); i++) {
-			System.out.println(pl.get(i).getIdpret()+" "+pl.get(i).getMontant());
-		}
-		
-		//System.out.println(a.getIdpret()+" "+ a.getMontant()+" "+a.getDatepret());
 	}
 }

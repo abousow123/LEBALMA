@@ -21,7 +21,7 @@ public class Client {
 
 	private int telephone;
 
-	public int pret;
+	public java.util.Collection<Pret> pret;
 
 	public java.util.Collection<Versement> versement;
 
@@ -33,7 +33,6 @@ public class Client {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.telephone = telephone;
-		this.pret = pret;
 		this.versement = versement;
 	}
 
@@ -53,12 +52,26 @@ public class Client {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.telephone = telephone;
+		
+	}
+	
+	
+
+	
+
+	
+	public Client(int cni, String prenom, String nom, String adresse, int telephone, Collection<Pret> pret,
+			Collection<Versement> versement) {
+		super();
+		this.cni = cni;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.telephone = telephone;
 		this.pret = pret;
+		this.versement = versement;
 	}
 
-	
-
-	
 	// Getters and Setters
 	
 	public int getCni() {
@@ -101,13 +114,7 @@ public class Client {
 		this.telephone = telephone;
 	}
 
-	public int getPret() {
-		return pret;
-	}
-
-	public void setPret(int pret) {
-		this.pret = pret;
-	}
+	
 
 	public java.util.Collection<Versement> getVersement() {
 		return versement;
@@ -116,5 +123,15 @@ public class Client {
 	public void setVersement(java.util.Collection<Versement> versement) {
 		this.versement = versement;
 	}
+
+	public java.util.Collection<Pret> getPret() {
+		return pret;
+	}
+
+	public void setPret(java.util.Collection<Pret> pret) {
+		this.pret = pret;
+	}
+	
+	
 
 }

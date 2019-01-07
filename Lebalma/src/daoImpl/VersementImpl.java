@@ -27,7 +27,7 @@ public class VersementImpl implements IVersement {
 			ps.setDouble(3,v.getMontantverser());
 			ps.setDate(4, (Date) v.getDateversement());
 			
-			ps.executeQuery();
+			ps.executeUpdate();
 			ps.close();
 			
 		} catch (SQLException e) {

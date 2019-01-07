@@ -18,16 +18,15 @@ public class ClientImpl implements IClient {
 		// TODO Auto-generated method stub
 		Connection dbConnection = DBconnexion.getConnection() ;
 		try {
-			PreparedStatement ps = dbConnection.prepareStatement("INSERT INTO Client(cni,idpret,prenom,nom"
-					+ "adresse,telephone) values(?,?,?,?,?,?);");
+			PreparedStatement ps = dbConnection.prepareStatement("INSERT INTO Client values(?,?,?,?,?);");
 			ps.setInt(1, c.getCni());
-			ps.setInt(2, c.getPret());
-			ps.setString(3, c.getPrenom());
-			ps.setString(4, c.getNom());
-			ps.setString(5, c.getAdresse());
-			ps.setInt(6, c.getTelephone());
+			//ps.setInt(2, c.getPret());
+			ps.setString(2, c.getPrenom());
+			ps.setString(3, c.getNom());
+			ps.setString(4, c.getAdresse());
+			ps.setInt(5, c.getTelephone());
 			
-			ps.executeQuery();
+			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -63,13 +62,13 @@ public class ClientImpl implements IClient {
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				int cni = rs.getInt("cni");
-				int idpret = rs.getInt("idpret");
+				
 				String prenom = rs.getString("prenom");
 				String nom = rs.getString("nom");
 				String adresse = rs.getString("adresse");
 				int tel = rs.getInt("telephone") ;
 				
-				clients.add(new Client(cni, prenom, nom, adresse, tel, idpret)) ;
+				clients.add(new Client(cni, prenom, nom, adresse, tel)) ;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -91,13 +90,13 @@ public class ClientImpl implements IClient {
 			
 			if(rs.next()){
 				int c = rs.getInt("cni");
-				int idpret = rs.getInt("idpret");
+			//	int idpret = rs.getInt("idpret");
 				String prenom = rs.getString("prenom");
 				String nom = rs.getString("nom");
 				String adresse = rs.getString("adresse");
 				int tel = rs.getInt("telephone") ;
 				
-				return new Client(c, prenom, nom, adresse, tel, idpret) ;
+				return new Client(c, prenom, nom, adresse, tel) ;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -117,9 +116,10 @@ public class ClientImpl implements IClient {
 			ps.setString(2, c.getNom());
 			ps.setString(3, c.getAdresse());
 			ps.setInt(4, c.getTelephone());
+			//ps.setInt(5, c.getPret());
 			ps.setInt(5, cni);
 			
-			ps.executeQuery();
+			ps.executeUpdate();
 			ps.close();
 			
 		} catch (SQLException e) {

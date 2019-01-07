@@ -29,11 +29,13 @@ public class PretImpl implements IPret {
 		
 		
 		try {
-			preparedStatement = dbConnection.prepareStatement("INSERT INTO Pret(idpret,montant,datepret)"
-					+ " values(?,?,?);") ;
+			preparedStatement = dbConnection.prepareStatement("INSERT INTO Pret(idpret,cni,montant,datepret)"
+					+ " values(?,?,?,?);") ;
 			preparedStatement.setInt(1, p.getIdpret());
-			preparedStatement.setDouble(2, p.getMontant());
-			preparedStatement.setDate(3, (Date) p.getDatepret());
+			preparedStatement.setInt(2, p.getCni());
+			preparedStatement.setDouble(3, p.getMontant());
+			preparedStatement.setDate(4,  (Date) p.getDatepret());
+			
 			
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
