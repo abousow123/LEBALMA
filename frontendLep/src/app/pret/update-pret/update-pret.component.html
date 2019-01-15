@@ -1,0 +1,69 @@
+<p></p>
+<div class="container">
+  <div class="panel panel-primary" *ngIf="mode==1">
+    <div class="panel-heading">Modification</div>
+    <div class="panel-body">
+      <div>
+        
+
+
+        <div>
+          <div class="form-group">
+            <label class="control-label">CNI:</label>
+            <input class="form-control" type="number" [(ngModel)]="pret.identiteClient"/>
+          </div>
+
+    <div>
+      <div class="form-group">
+        <label class="control-label">Montant :</label>
+        <input class="form-control" type="text" [(ngModel)]="pret.montant"/>
+      </div>
+
+
+        <button class="btn btn-primary" (click)="updatePret()">update</button>
+
+      </div>
+
+
+  </div>
+</div>
+  
+       <!-- Confirmation -->
+
+
+       <div class="panel panel-primary" *ngIf="mode==2">
+        <div class="panel-heading">Confirmation</div>
+        <div class="panel-body">
+          <div>
+
+            <div class="form-group">
+                  <label class="control-label">ID PRET:</label>
+                  <label>{{pret.idpret}}</label>
+            </div>
+
+
+            <div class="form-group">
+              <label class="control-label">CNI:</label>
+              <label>{{pret.identiteClient}}</label>
+            </div>
+    
+            <div class="form-group">
+                <label class="control-label">Montant Pret:</label>
+                <label>{{pret.montant}}</label>
+            </div>
+    
+           
+    
+            <button class="btn btn-primary" (click)="mode=1">Nouveau Pret</button>
+    
+          </div>
+    
+    
+      </div>
+    </div>
+      
+  
+  
+  </div>
+
+

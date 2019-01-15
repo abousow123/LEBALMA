@@ -2,34 +2,33 @@
 <div class="container">
 
 <div class="panel panel-primary">
-  <div class="panel-heading">Liste des Clients</div>
+  <div class="panel-heading">Liste des Versement</div>
   <div class="panel-body">
     <div>
-        <button routerLink="/newClient" class="btn btn-primary">Nouveau</button>
+        <button routerLink="/newVersement" class="btn btn-primary">Nouveau</button>
     </div>
    <p></p>
-   <div class="form-group">
+    <div class="form-group">
       <label>Mot Clé:</label>
-      <input type="text" [(ngModel)]="motCle"/>
-      <button class="btn btn-primary" (click)="chercher()">Chercher</button>
+      <input type="number" [(ngModel)]="motCle"/>
+      <button class="btn btn-primary" (click)="chercher()" >Chercher</button>
     </div> 
- 
+
     <table class="table table-striped table-hover">
       <tr>
-        <td>CNI</td><td>Prenom</td><td>Nom</td><td>Adresse</td><td>tel</td><td>Action</td>
+        <td>ID_VERSEMENT</td><td>MONTANT</td><td>IDENTITE CLIENT</td><td>DATE</td><td>ACTION</td>
       </tr>
 
-      <tr *ngFor="let e of clients?.content">
-        <td>{{e.cni}}</td>
-        <td>{{e.prenom}}</td>
-        <td>{{e.nom}}</td>
-        <td>{{e.adresse}}</td>
-        <td>{{e.telephone}}</td>
+      <tr *ngFor="let e of versement">
+        <td>{{e.idverser}}</td>
+        <td>{{e.montantverser}}</td>
+        <td>{{e.identiteClient}}</td>
+        <td>{{e.dateversement}}</td>
         <td>
-          <a (click)="onEditClient(e.cni)">Editer</a><br/>
-          <a (click)="deleteClient(e)">Supprimer</a>
+          <a (click)="onEditVersement(e.idverser)">Edit</a><br/>
+          <a (click)="deleteVersement(e)">Delete</a>
         </td>
-        
+       
       </tr>
     </table>
 
@@ -59,3 +58,5 @@
 
 </div>
         
+
+

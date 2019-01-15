@@ -6,15 +6,19 @@ import java.util.Optional;
 import org.sid.bo.Client;
 import org.sid.dao.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-@CrossOrigin(origins="*")
+
 @RestController
+@CrossOrigin(origins="*")
 public class ClientRest {
 	
 	@Autowired
@@ -39,14 +43,25 @@ public class ClientRest {
 	
 	@RequestMapping(value ="/Client/{cni}",method=RequestMethod.DELETE)
 	public boolean deleteClient(@PathVariable int cni){
-		clientRepository.deleteById(cni);;
+		clientRepository.deleteById(cni);
 		return true ;
 	}
 	
 	
-	@RequestMapping(value = "/updateClient",method=RequestMethod.PUT)
-	public Client updateUser(@RequestBody Client c){
-		return clientRepository.saveAndFlush(c) ;
+	@RequestMapping(value="/chercherClient",method=RequestMethod.GET)
+	public Page<Client> chercher(@RequestParam(name="mc",defaultValue="") String mc,
+			@RequestParam(name="page",defaultValue="0")int page,
+			@RequestParam(name="size",defaultValue="5")int size){
+		
+		  return clientRepository.chercher("%"+mc+"%", new PageRequest(page, size)) ;
+	}
+	
+	
+	@RequestMapping(value = "/updateClient/{id}",method=RequestMethod.PUT)
+	public boolean updateUser(@PathVariable("id") int id, @RequestBody Client c){
+		c.setCni(id);
+		 clientRepository.saveAndFlush(c) ;
+		 return true ;
 	}
 	
 	
